@@ -3,7 +3,7 @@
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/weitieda/BottomSheet)
 [![License](https://img.shields.io/github/license/weitieda/BottomSheet)](LICENSE)
 
-<a href="https://placehold.it/400?text=Screen+shot"><img width=200 height=200 src="https://placehold.it/400?text=Screen+shot" alt="Screenshot" /></a>
+![preview](demo.gif)
 
 
 ## Example
