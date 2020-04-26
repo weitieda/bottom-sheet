@@ -5,22 +5,34 @@
 
 ![preview](demo.gif)
 
+## Requirements
+
+iOS 13
+
+## Usage
+Simply wrap `BottomSheet` in `ZStack`
+
+```swift
+@State var shouldShow = true
+
+ZStack {
+    Text("Hi")
+    BottomSheet(shouldShow: $shouldShow, maxHeight: 300) {
+        List(0..<20) { Text("\($0)") }
+    }
+}
+```
+You can also set `topBarBackgroundColor` and `contentBackgroundColor` in `initializer` as you want.
 
 ## Example
 
 To run the example project, clone this repo, and open iOS Example.xcworkspace from the iOS Example directory.
 
-
-## Requirements
-
-iOS 13
-
-
 ## Installation
 
 ### Swift Package Manager (Xcode 11+)
 
-In `Xcode 11`, select `File` -> `Swift Packages` -> `Add Package Dependency`, enter the repo URL `https://github.com/weitieda/BottomSheet`.
+In `Xcode 11`, select `File` -> `Swift Packages` -> `Add Package Dependency`, enter the repo URL `https://github.com/weitieda/BottomSheet`
 
 
 ## Author
