@@ -26,9 +26,8 @@ struct ContentView: View {
             }
             BottomSheet(shouldShow: $shouldShow, maxHeight: 500) {
 //                Text("Hello")
-                List(0..<20) { item in
-                    Text("\(item)").bold()
-                }
+                        List(0..<20) { Text("\($0)") }
+
             }
         }
     }
