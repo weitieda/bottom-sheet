@@ -10,9 +10,8 @@ import SwiftUI
 
 public struct BottomSheet<Content: View>: View {
     
-    private var dragToDismissThreshold: CGFloat { maxHeight * 0.4 }
+    private var dragToDismissThreshold: CGFloat { maxHeight * 0.2 }
     private var grayBackgroundOpacity: Double { shouldShow ? (0.4 - Double(draggedOffset)/600) : 0 }
-    private let dragUpOffset: CGFloat = -30
     private let topBarHeight: CGFloat = 30
     
     @State private var draggedOffset: CGFloat = 0
@@ -45,11 +44,13 @@ public struct BottomSheet<Content: View>: View {
                 self.fullScreenLightGrayOverlay()
                 VStack(spacing: 0) {
                     self.topBar(geometry: geometry)
-                    VStack {
+                    VStack(spacing: -8) {
+                        Spacer()
                         self.content.padding(.bottom, geometry.safeAreaInsets.bottom)
+                        Spacer()
                     }
                 }
-                .frame(height: self.maxHeight)
+                .frame(height: self.maxHeight - self.draggedOffset*2)
                 .background(self.contentBackgroundColor)
                 .cornerRadius(self.topBarHeight/3, corners: [.topLeft, .topRight])
                 .animation(.interactiveSpring())
@@ -80,7 +81,7 @@ public struct BottomSheet<Content: View>: View {
                 .onChanged({ (value) in
                     
                     let offsetY = value.translation.height
-                    guard offsetY >= self.dragUpOffset else { return }
+                    self.draggedOffset = offsetY
                     
                     if let previousValue = self.previousDragValue {
                         let previousOffsetY = previousValue.translation.height
@@ -94,7 +95,6 @@ public struct BottomSheet<Content: View>: View {
                     }
                     self.previousDragValue = value
                     
-                    self.draggedOffset = offsetY
                 })
                 .onEnded({ (value) in
                     let offsetY = value.translation.height
