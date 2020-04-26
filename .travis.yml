@@ -1,0 +1,19 @@
+os: osx
+osx_image: xcode11.1
+env:
+  global:
+  - WORKSPACE="./iOS Example/iOS Example.xcworkspace"
+  - IOS_FRAMEWORK_SCHEME="iOS Example"
+  - EXAMPLE_SCHEME="iOS Example"
+  matrix:
+    - DESTINATION="OS=13.1,name=iPhone 11"
+      SCHEME="$IOS_FRAMEWORK_SCHEME"
+script:
+  - set -o pipefail
+  - xcodebuild -version
+  - xcodebuild -showsdks
+  - xcodebuild -list
+  - xcodebuild -workspace "$WORKSPACE" -list
+
+  # Build Example in Debug
+  - xcodebuild -workspace "$WORKSPACE" -scheme "$EXAMPLE_SCHEME" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO build | xcpretty -c
