@@ -10,7 +10,7 @@ import SwiftUI
 import BottomSheet
 
 struct ContentView: View {
-    @State var shouldShow = true
+    @State var isPresented = true
     
     var body: some View {
         ZStack {
@@ -19,12 +19,12 @@ struct ContentView: View {
                     Color.secondary
                     Text("Hi")
                 }.navigationBarItems(trailing:
-                    Button(action: { self.shouldShow = true }) {
+                    Button(action: { self.isPresented = true }) {
                         Text("Show")
                     }
                 ).navigationBarTitle("Bottom Sheet")
             }
-            BottomSheet(shouldShow: $shouldShow, maxHeight: 500) {
+            BottomSheet(isPresented: $isPresented, maxHeight: 500) {
 //                Text("Hello")
                 List(0..<20) { Text("\($0)") }
             }

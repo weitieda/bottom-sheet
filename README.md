@@ -13,11 +13,11 @@ iOS 13
 Simply wrap `BottomSheet` in `ZStack`
 
 ```swift
-@State var shouldShow = true
+@State var isPresented = true
 
 ZStack {
     Text("Hi")
-    BottomSheet(shouldShow: $shouldShow, maxHeight: 300) {
+    BottomSheet(isPresented: $isPresented, maxHeight: 300) {
         List(0..<20) { Text("\($0)") }
     }
 }
