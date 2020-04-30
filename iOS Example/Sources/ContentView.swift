@@ -13,21 +13,17 @@ struct ContentView: View {
     @State var isPresented = true
     
     var body: some View {
-        ZStack {
-            NavigationView {
-                ZStack {
-                    Color.secondary
-                    Text("Hi")
-                }.navigationBarItems(trailing:
-                    Button(action: { self.isPresented = true }) {
-                        Text("Show")
-                    }
-                ).navigationBarTitle("Bottom Sheet")
+        NavigationView {
+            List(0..<20) {
+                Text("\($0)")
             }
-            BottomSheet(isPresented: $isPresented, maxHeight: 500) {
-//                Text("Hello")
-                List(0..<20) { Text("\($0)") }
+            .bottomSheet(isPresented: self.$isPresented, maxHeight: 300) {
+                List(20..<40) { Text("\($0)") }
             }
+            .navigationBarTitle("Bottom Sheet")
+            .navigationBarItems(
+                trailing: Button(action: { self.isPresented = true }) { Text("Show") }
+            )
         }
     }
 }

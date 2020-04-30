@@ -18,11 +18,10 @@ public struct BottomSheet<Content: View>: View {
     @State private var previousDragValue: DragGesture.Value?
 
     @Binding var isPresented: Bool
-    let maxHeight: CGFloat
+    private let maxHeight: CGFloat
     private let content: Content
-    
-    let contentBackgroundColor: Color
-    let topBarBackgroundColor: Color
+    private let contentBackgroundColor: Color
+    private let topBarBackgroundColor: Color
     
     public init(
         isPresented: Binding<Bool>,
