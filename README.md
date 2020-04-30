@@ -11,6 +11,8 @@ iOS 13
 
 ## Usage
 
+Same way as you use `Sheet` in `SwiftUI`
+
 ```swift
 NavigationView {
     List(0..<20) {
@@ -25,7 +27,7 @@ NavigationView {
     )
 }
 ```
-You can also set `topBarBackgroundColor` and `contentBackgroundColor` in `initializer` as you want.
+You can also customize `topBarBackgroundColor` and `contentBackgroundColor` in `initializer` as you want.
 
 ## Example
 
