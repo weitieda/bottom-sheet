@@ -10,16 +10,19 @@
 iOS 13
 
 ## Usage
-Simply wrap `BottomSheet` in `ZStack`
 
 ```swift
-@State var isPresented = true
-
-ZStack {
-    Text("Hi")
-    BottomSheet(isPresented: $isPresented, maxHeight: 300) {
-        List(0..<20) { Text("\($0)") }
+NavigationView {
+    List(0..<20) {
+        Text("\($0)")
     }
+    .bottomSheet(isPresented: self.$isPresented, maxHeight: 300) {
+        List(20..<40) { Text("\($0)") }
+    }
+    .navigationBarTitle("Bottom Sheet")
+    .navigationBarItems(
+        trailing: Button(action: { self.isPresented = true }) { Text("Show") }
+    )
 }
 ```
 You can also set `topBarBackgroundColor` and `contentBackgroundColor` in `initializer` as you want.
