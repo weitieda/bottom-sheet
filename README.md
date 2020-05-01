@@ -24,14 +24,16 @@ NavigationView {
     }
     .navigationBarTitle("Bottom Sheet")
     .navigationBarItems(
-        trailing: Button(action: { self.isPresented = true }) { Text("Show") }
+        trailing: Button(action: { self.isPresented = true }) {
+            Text("Show")
+        }
     )
 }
 ```
 
-You can also customize `topBarBackgroundColor` and `contentBackgroundColor` in `initializer` as you want.
-
 ## Example
+
+> Both demo preview code are available in example project.
 
 To run the example project, clone this repo, and open iOS Example.xcworkspace from the iOS Example directory.
 

@@ -10,7 +10,7 @@ import SwiftUI
 import BottomSheet
 
 struct ContentView: View {
-    @State var isPresented = false
+    @State var showList = false
     @State var showMap = true
     
     var body: some View {
@@ -18,7 +18,7 @@ struct ContentView: View {
             List(0..<20) {
                 Text("\($0)")
             }
-            .bottomSheet(isPresented: self.$isPresented, height: 500) {
+            .bottomSheet(isPresented: self.$showList, height: 500) {
                 List(20..<40) { Text("\($0)") }
             }
             .bottomSheet(isPresented: self.$showMap, height: 370, showTopIndicator: false) {
@@ -73,7 +73,7 @@ struct ContentView: View {
             .navigationBarTitle("Bottom Sheet")
             .navigationBarItems(
                 leading: Button(action: { self.showMap = true }) { Text("Setting") },
-                trailing: Button(action: { self.isPresented = true }) { Text("List") }
+                trailing: Button(action: { self.showList = true }) { Text("List") }
             )
         }
     }
