@@ -1,10 +1,10 @@
-# BottomSheet
+![SwiftUI BottomSheet](Asset/logo.png)
 
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/weitieda/BottomSheet)
 [![License](https://img.shields.io/github/license/weitieda/BottomSheet)](LICENSE)
 
-![preview](demo1.gif)
-![preview](demo2.gif)
+![preview](Asset/demo1.gif)
+![preview](Asset/demo2.gif)
 
 ## Requirements
 
