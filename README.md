@@ -3,7 +3,7 @@
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/weitieda/BottomSheet)
 [![License](https://img.shields.io/github/license/weitieda/BottomSheet)](LICENSE)
 
-![preview](demo.gif)
+![preview](demo1.gif)
 ![preview](demo2.gif)
 
 ## Requirements
