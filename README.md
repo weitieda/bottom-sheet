@@ -4,6 +4,7 @@
 [![License](https://img.shields.io/github/license/weitieda/BottomSheet)](LICENSE)
 
 ![preview](demo.gif)
+![preview](demo2.gif)
 
 ## Requirements
 
@@ -27,6 +28,7 @@ NavigationView {
     )
 }
 ```
+
 You can also customize `topBarBackgroundColor` and `contentBackgroundColor` in `initializer` as you want.
 
 ## Example
@@ -39,11 +41,9 @@ To run the example project, clone this repo, and open iOS Example.xcworkspace fr
 
 In `Xcode 11`, select `File` -> `Swift Packages` -> `Add Package Dependency`, enter the repo URL `https://github.com/weitieda/BottomSheet`
 
-
 ## Author
 
 Tieda Wei
-
 
 ## License
 
