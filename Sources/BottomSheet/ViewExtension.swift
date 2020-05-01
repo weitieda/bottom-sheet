@@ -11,17 +11,19 @@ import SwiftUI
 public extension View {
     func bottomSheet<Content: View>(
         isPresented: Binding<Bool>,
-        maxHeight: CGFloat,
+        height: CGFloat,
         contentBackgroundColor: Color = Color(.systemBackground),
         topBarBackgroundColor: Color = Color(.systemBackground),
+        showTopIndicator: Bool = true,
         @ViewBuilder content: @escaping () -> Content
     ) -> some View {
         ZStack {
             self
             BottomSheet(isPresented: isPresented,
-                        maxHeight: maxHeight,
+                        height: height,
                         topBarBackgroundColor: topBarBackgroundColor,
                         contentBackgroundColor: contentBackgroundColor,
+                        showTopIndicator: showTopIndicator,
                         content: content)
         }
     }
