@@ -41,7 +41,7 @@ To run the example project, clone this repo, and open iOS Example.xcworkspace fr
 
 ### Swift Package Manager (Xcode 11+)
 
-In `Xcode 11`, select `File` -> `Swift Packages` -> `Add Package Dependency`, enter the repo URL `https://github.com/weitieda/BottomSheet`
+In `Xcode 11`, select `File` -> `Swift Packages` -> `Add Package Dependency`, enter the repo URL `https://github.com/weitieda/bottomsheet`
 
 ## Author
 
