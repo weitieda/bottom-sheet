@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "BottomSheet"
-  spec.version      = "1.0.0"
+  spec.version      = "1.0.5"
   spec.summary      = "⬆️ A SwiftUI view component sliding in from bottom"
   spec.homepage     = "http://www.github.com/weitieda/bottom-sheet"
   spec.license      = { :type => "MIT", :file => "LICENSE" }
