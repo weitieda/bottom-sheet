@@ -38,15 +38,13 @@ NavigationView {
 To run the example project, clone this repo, and open iOS Example.xcworkspace from the iOS Example directory.
 
 ## Installation
+#### Swift Package Manager
+To install `BottomSheet` using [Swift Package Manager](https://swift.org/package-manager/), add
+`.package(name: "BottomSheet", url: "https://github.com/weitieda/bottom-sheet", from: "1.0.0"),"` to your Package.swift, then follow the integration tutorial [here](https://swift.org/package-manager#importing-dependencies).
 
-### CocoaPods
-```
-pod 'BottomSheet', :git => 'https://github.com/weitieda/bottom-sheet.git'
-```
-
-### Swift Package Manager (Xcode 11+)
-
-In `Xcode 11`, select `File` -> `Swift Packages` -> `Add Package Dependency`, enter the repo URL `https://github.com/weitieda/bottom-sheet`
+#### CocoaPods
+To install `BottomSheet` using [CocoaPods](http://cocoapods.org), add
+`pod 'BottomSheet', :git => 'https://github.com/weitieda/bottom-sheet.git'` to your Podfile, then follow the integration tutorial [here](https://guides.cocoapods.org/using/using-cocoapods.html).
 
 ## Author
 
