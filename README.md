@@ -39,6 +39,9 @@ To run the example project, clone this repo, and open iOS Example.xcworkspace fr
 
 ## Installation
 
+### CocoaPods
+`pod 'BottomSheet', :git => 'https://github.com/weitieda/bottom-sheet.git'`
+
 ### Swift Package Manager (Xcode 11+)
 
 In `Xcode 11`, select `File` -> `Swift Packages` -> `Add Package Dependency`, enter the repo URL `https://github.com/weitieda/bottom-sheet`
