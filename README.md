@@ -40,7 +40,9 @@ To run the example project, clone this repo, and open iOS Example.xcworkspace fr
 ## Installation
 
 ### CocoaPods
-`pod 'BottomSheet', :git => 'https://github.com/weitieda/bottom-sheet.git'`
+```
+pod 'BottomSheet', :git => 'https://github.com/weitieda/bottom-sheet.git'
+```
 
 ### Swift Package Manager (Xcode 11+)
 
