@@ -48,7 +48,7 @@ To install `BottomSheet` using [CocoaPods](http://cocoapods.org), add
 
 ## Author
 
-Tieda Wei
+[Tieda Wei](https://tiedawei.com)
 
 ## License
 
