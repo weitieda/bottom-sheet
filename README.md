@@ -8,7 +8,7 @@
 
 ## Requirements
 
-iOS 13
+iOS 13+
 
 ## Usage
 
@@ -19,7 +19,7 @@ NavigationView {
     List(0..<20) {
         Text("\($0)")
     }
-    .bottomSheet(isPresented: self.$isPresented, height: 300) {
+    .bottomSheet(isPresented: $isPresented, height: 300) {
         List(20..<40) { Text("\($0)") }
     }
     .navigationBarTitle("Bottom Sheet")
