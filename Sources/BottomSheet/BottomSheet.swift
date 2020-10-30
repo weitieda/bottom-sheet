@@ -12,13 +12,14 @@ public struct BottomSheet<Content: View>: View {
     
     private var dragToDismissThreshold: CGFloat { height * 0.2 }
     private var grayBackgroundOpacity: Double { isPresented ? (0.4 - Double(draggedOffset)/600) : 0 }
-    private let topBarHeight: CGFloat = 30
     
     @State private var draggedOffset: CGFloat = 0
     @State private var previousDragValue: DragGesture.Value?
 
     @Binding var isPresented: Bool
     private let height: CGFloat
+    private let topBarHeight: CGFloat
+    private let topBarCornerRadius: CGFloat
     private let content: Content
     private let contentBackgroundColor: Color
     private let topBarBackgroundColor: Color
@@ -27,6 +28,8 @@ public struct BottomSheet<Content: View>: View {
     public init(
         isPresented: Binding<Bool>,
         height: CGFloat,
+        topBarHeight: CGFloat = 30,
+        topBarCornerRadius: CGFloat? = nil,
         topBarBackgroundColor: Color = Color(.systemBackground),
         contentBackgroundColor: Color = Color(.systemBackground),
         showTopIndicator: Bool,
@@ -36,6 +39,12 @@ public struct BottomSheet<Content: View>: View {
         self.contentBackgroundColor = contentBackgroundColor
         self._isPresented = isPresented
         self.height = height
+        self.topBarHeight = topBarHeight
+        if let topBarCornerRadius = topBarCornerRadius {
+            self.topBarCornerRadius = topBarCornerRadius
+        } else {
+            self.topBarCornerRadius = topBarHeight / 3
+        }
         self.showTopIndicator = showTopIndicator
         self.content = content()
     }
@@ -54,7 +63,7 @@ public struct BottomSheet<Content: View>: View {
                 }
                 .frame(height: self.height - min(self.draggedOffset*2, 0))
                 .background(self.contentBackgroundColor)
-                .cornerRadius(self.topBarHeight/3, corners: [.topLeft, .topRight])
+                .cornerRadius(self.topBarCornerRadius, corners: [.topLeft, .topRight])
                 .animation(.interactiveSpring())
                 .offset(y: self.isPresented ? (geometry.size.height/2 - self.height/2 + geometry.safeAreaInsets.bottom + self.draggedOffset) : (geometry.size.height/2 + self.height/2 + geometry.safeAreaInsets.bottom))
             }
@@ -77,7 +86,7 @@ public struct BottomSheet<Content: View>: View {
                 .frame(width: 40, height: 6)
                 .opacity(showTopIndicator ? 1 : 0)
         }
-        .frame(width: geometry.size.width, height: self.topBarHeight)
+        .frame(width: geometry.size.width, height: topBarHeight)
         .background(topBarBackgroundColor)
         .gesture(
             DragGesture()

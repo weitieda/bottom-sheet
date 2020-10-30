@@ -21,8 +21,14 @@ struct ContentView: View {
             .bottomSheet(isPresented: $showList, height: 500) {
                 List(20..<40) { Text("\($0)") }
             }
-            .bottomSheet(isPresented: $showMapSetting, height: 370, showTopIndicator: false) {
-               MapSettingView()
+            .bottomSheet(
+                isPresented: $showMapSetting,
+                height: 370,
+                topBarHeight: 16,
+                topBarCornerRadius: 16,
+                showTopIndicator: false
+            ) {
+                MapSettingView()
             }
             .navigationBarTitle("Bottom Sheet")
             .navigationBarItems(
