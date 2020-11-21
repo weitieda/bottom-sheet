@@ -10,6 +10,8 @@
 
 iOS 13+
 
+Swift 5.0
+
 ## Usage
 
 Same way as you use `Sheet` in `SwiftUI`
