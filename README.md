@@ -20,9 +20,9 @@ Same way as you use `Sheet` in `SwiftUI`
 NavigationView {
     List(0..<20) {
         Text("\($0)")
-    }
+    }.listStyle(PlainListStyle())
     .bottomSheet(isPresented: $isPresented, height: 300) {
-        List(20..<40) { Text("\($0)") }
+        List(20..<40) { Text("\($0)") }.listStyle(PlainListStyle())
     }
     .navigationBarTitle("Bottom Sheet")
     .navigationBarItems(
