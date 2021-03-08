@@ -17,9 +17,9 @@ struct ContentView: View {
         NavigationView {
             List(0..<20) {
                 Text("\($0)")
-            }
+            }.listStyle(PlainListStyle())
             .bottomSheet(isPresented: $showList, height: 500) {
-                List(20..<40) { Text("\($0)") }
+                List(20..<40) { Text("\($0)") }.listStyle(PlainListStyle())
             }
             .bottomSheet(
                 isPresented: $showMapSetting,
