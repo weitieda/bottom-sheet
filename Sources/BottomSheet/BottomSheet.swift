@@ -24,6 +24,7 @@ public struct BottomSheet<Content: View>: View {
     private let contentBackgroundColor: Color
     private let topBarBackgroundColor: Color
     private let showTopIndicator: Bool
+    private let dismissOnTapOutside: Bool
     
     public init(
         isPresented: Binding<Bool>,
@@ -33,6 +34,7 @@ public struct BottomSheet<Content: View>: View {
         topBarBackgroundColor: Color = Color(.systemBackground),
         contentBackgroundColor: Color = Color(.systemBackground),
         showTopIndicator: Bool,
+        dismissOnTapOutside: Bool? = nil,
         @ViewBuilder content: () -> Content
     ) {
         self.topBarBackgroundColor = topBarBackgroundColor
@@ -46,6 +48,7 @@ public struct BottomSheet<Content: View>: View {
             self.topBarCornerRadius = topBarHeight / 3
         }
         self.showTopIndicator = showTopIndicator
+        self.dismissOnTapOutside = dismissOnTapOutside ?? true
         self.content = content()
     }
     
@@ -76,7 +79,11 @@ public struct BottomSheet<Content: View>: View {
             .opacity(grayBackgroundOpacity)
             .edgesIgnoringSafeArea(.all)
             .animation(.interactiveSpring())
-            .onTapGesture { self.isPresented = false }
+            .onTapGesture {
+                if dismissOnTapOutside {
+                    self.isPresented = false
+                }
+            }
     }
     
     fileprivate func topBar(geometry: GeometryProxy) -> some View {

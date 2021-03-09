@@ -17,6 +17,7 @@ public extension View {
         contentBackgroundColor: Color = Color(.systemBackground),
         topBarBackgroundColor: Color = Color(.systemBackground),
         showTopIndicator: Bool = true,
+        dismissOnTapOutside: Bool? = nil,
         @ViewBuilder content: @escaping () -> Content
     ) -> some View {
         ZStack {
@@ -28,6 +29,7 @@ public extension View {
                         topBarBackgroundColor: topBarBackgroundColor,
                         contentBackgroundColor: contentBackgroundColor,
                         showTopIndicator: showTopIndicator,
+                        dismissOnTapOutside: dismissOnTapOutside,
                         content: content)
         }
     }
