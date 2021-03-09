@@ -7,4 +7,8 @@ BottomSheet adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 
+- 1.0.6
+
+Removing List padding on examples.
+
 ### Removed
