@@ -42,11 +42,7 @@ public struct BottomSheet<Content: View>: View {
         self._isPresented = isPresented
         self.height = height
         self.topBarHeight = topBarHeight
-        if let topBarCornerRadius = topBarCornerRadius {
-            self.topBarCornerRadius = topBarCornerRadius
-        } else {
-            self.topBarCornerRadius = topBarHeight / 3
-        }
+        self.topBarCornerRadius = topBarCornerRadius ?? topBarHeight / 3
         self.showTopIndicator = showTopIndicator
         self.dismissOnTapOutside = dismissOnTapOutside ?? true
         self.content = content()
