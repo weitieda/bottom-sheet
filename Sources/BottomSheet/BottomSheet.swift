@@ -17,6 +17,7 @@ public struct BottomSheet<Content: View>: View {
     @State private var previousDragValue: DragGesture.Value?
 
     @Binding var isPresented: Bool
+    @State var gestureEnded: Bool
     private let height: CGFloat
     private let topBarHeight: CGFloat
     private let topBarCornerRadius: CGFloat
@@ -24,6 +25,7 @@ public struct BottomSheet<Content: View>: View {
     private let contentBackgroundColor: Color
     private let topBarBackgroundColor: Color
     private let showTopIndicator: Bool
+    private let animation: Animation
     
     public init(
         isPresented: Binding<Bool>,
@@ -33,6 +35,7 @@ public struct BottomSheet<Content: View>: View {
         topBarBackgroundColor: Color = Color(.systemBackground),
         contentBackgroundColor: Color = Color(.systemBackground),
         showTopIndicator: Bool,
+        animation: Animation = .interactiveSpring(),
         @ViewBuilder content: () -> Content
     ) {
         self.topBarBackgroundColor = topBarBackgroundColor
@@ -64,7 +67,7 @@ public struct BottomSheet<Content: View>: View {
                 .frame(height: self.height - min(self.draggedOffset*2, 0))
                 .background(self.contentBackgroundColor)
                 .cornerRadius(self.topBarCornerRadius, corners: [.topLeft, .topRight])
-                .animation(.interactiveSpring())
+                .animation(self.gestureEnded ? .interactiveSpring() : self.animation)
                 .offset(y: self.isPresented ? (geometry.size.height/2 - self.height/2 + geometry.safeAreaInsets.bottom + self.draggedOffset) : (geometry.size.height/2 + self.height/2 + geometry.safeAreaInsets.bottom))
             }
         }
@@ -75,8 +78,11 @@ public struct BottomSheet<Content: View>: View {
             .black
             .opacity(grayBackgroundOpacity)
             .edgesIgnoringSafeArea(.all)
-            .animation(.interactiveSpring())
-            .onTapGesture { self.isPresented = false }
+            .animation(self.gestureEnded ? .interactiveSpring() : self.animation)
+            .onTapGesture {
+                self.gestureEnded = false
+                self.isPresented = false
+            }
     }
     
     fileprivate func topBar(geometry: GeometryProxy) -> some View {
@@ -91,7 +97,6 @@ public struct BottomSheet<Content: View>: View {
         .gesture(
             DragGesture()
                 .onChanged({ (value) in
-                    
                     let offsetY = value.translation.height
                     self.draggedOffset = offsetY
                     
@@ -113,6 +118,8 @@ public struct BottomSheet<Content: View>: View {
                     if offsetY > self.dragToDismissThreshold {
                         self.isPresented = false
                     }
+                    
+                    self.gestureEnded = false
                     self.draggedOffset = 0
                 })
         )
