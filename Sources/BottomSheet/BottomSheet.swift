@@ -41,6 +41,7 @@ public struct BottomSheet<Content: View>: View {
         self.topBarBackgroundColor = topBarBackgroundColor
         self.contentBackgroundColor = contentBackgroundColor
         self._isPresented = isPresented
+        self._gestureEnded = State(initialValue: true)
         self.height = height
         self.topBarHeight = topBarHeight
         if let topBarCornerRadius = topBarCornerRadius {
@@ -48,6 +49,7 @@ public struct BottomSheet<Content: View>: View {
         } else {
             self.topBarCornerRadius = topBarHeight / 3
         }
+        self.animation = animation
         self.showTopIndicator = showTopIndicator
         self.content = content()
     }
@@ -110,6 +112,7 @@ public struct BottomSheet<Content: View>: View {
                             return
                         }
                     }
+                    self.gestureEnded = true
                     self.previousDragValue = value
                     
                 })
