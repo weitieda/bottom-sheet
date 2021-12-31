@@ -8,7 +8,7 @@
 
 ## Requirements
 
-iOS 13+
+iOS 13.0+
 
 ## Usage
 
