@@ -35,7 +35,7 @@ To run the example project, clone this repo, and open iOS Example.xcworkspace fr
 
 ## Installation
 
-> Requirements: iOS 13.0+
+>📱 iOS 13.0+
 
 #### Swift Package Manager
 To install `BottomSheet` using [Swift Package Manager](https://swift.org/package-manager/), add
