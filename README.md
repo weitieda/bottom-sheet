@@ -6,10 +6,6 @@
 ![preview](Asset/demo1.gif)
 ![preview](Asset/demo2.gif)
 
-## Requirements
-
-iOS 13.0+
-
 ## Usage
 
 Same way as you use `Sheet` in `SwiftUI`
@@ -38,6 +34,9 @@ NavigationView {
 To run the example project, clone this repo, and open iOS Example.xcworkspace from the iOS Example directory.
 
 ## Installation
+
+> Requirements: iOS 13.0+
+
 #### Swift Package Manager
 To install `BottomSheet` using [Swift Package Manager](https://swift.org/package-manager/), add
 `.package(name: "BottomSheet", url: "https://github.com/weitieda/bottom-sheet", from: "1.0.0"),"` to your Package.swift, then follow the integration tutorial [here](https://swift.org/package-manager#importing-dependencies).
