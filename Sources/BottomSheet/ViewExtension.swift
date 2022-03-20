@@ -50,7 +50,7 @@ public extension View {
             }
         }
         
-        return self.bottomSheet(
+        return bottomSheet(
             isPresented: isPresented,
             height: height,
             topBarHeight: topBarHeight,
