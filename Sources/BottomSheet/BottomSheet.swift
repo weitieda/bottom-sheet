@@ -91,7 +91,10 @@ public struct BottomSheet<Content: View>: View {
         .gesture(
             DragGesture()
                 .onChanged({ (value) in
-                    
+                    // ignore the swipe-up gesture which could collide with the iOS-global "go to homescreen"-gesture
+                    let isSwipeUp = value.startLocation.y > value.location.y
+                    if isPresented == false, isSwipeUp { return }
+
                     let offsetY = value.translation.height
                     self.draggedOffset = offsetY
                     
