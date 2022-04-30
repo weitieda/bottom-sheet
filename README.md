@@ -45,10 +45,6 @@ To install `BottomSheet` using [Swift Package Manager](https://swift.org/package
 To install `BottomSheet` using [CocoaPods](http://cocoapods.org), add
 `pod 'BottomSheet', :git => 'https://github.com/weitieda/bottom-sheet.git'` to your Podfile, then follow the integration tutorial [here](https://guides.cocoapods.org/using/using-cocoapods.html).
 
-## Author
-
-[Tieda Wei](https://tiedawei.com)
-
 ## License
 
 BottomSheet is available under the MIT license. See [the LICENSE file](LICENSE) for more information.
