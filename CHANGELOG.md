@@ -7,6 +7,8 @@ BottomSheet adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 
+Fix half-opened bottom sheet when returning from background.
+
 - 1.0.6
 
 Removing List padding on examples.

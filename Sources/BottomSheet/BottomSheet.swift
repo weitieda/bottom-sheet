@@ -91,7 +91,9 @@ public struct BottomSheet<Content: View>: View {
         .gesture(
             DragGesture()
                 .onChanged({ (value) in
-                    
+                    // ignore gestures while the sheet is hidden. Otherwise it could collide with the iOS-global "go to homescreen"-gesture
+                    guard isPresented else { return }
+
                     let offsetY = value.translation.height
                     self.draggedOffset = offsetY
                     
