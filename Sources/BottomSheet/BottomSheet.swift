@@ -61,16 +61,16 @@ public struct BottomSheet<Content: View>: View {
                         Spacer()
                     }
                 }
-                .frame(height: heightFix(geometry: geometry) - min(self.draggedOffset*2, 0))
+                .frame(height: sheetHeight(in: geometry) - min(self.draggedOffset*2, 0))
                 .background(self.contentBackgroundColor)
                 .cornerRadius(self.topBarCornerRadius, corners: [.topLeft, .topRight])
                 .animation(.interactiveSpring())
-                .offset(y: self.isPresented ? (geometry.size.height/2 - heightFix(geometry: geometry)/2 + geometry.safeAreaInsets.bottom + self.draggedOffset) : (geometry.size.height/2 + heightFix(geometry: geometry)/2 + geometry.safeAreaInsets.bottom))
+                .offset(y: self.isPresented ? (geometry.size.height/2 - sheetHeight(in: geometry)/2 + geometry.safeAreaInsets.bottom + self.draggedOffset) : (geometry.size.height/2 + sheetHeight(in: geometry)/2 + geometry.safeAreaInsets.bottom))
             }
         }
     }
     
-    fileprivate func heightFix(geometry: GeometryProxy) -> CGFloat {
+    fileprivate func sheetHeight(geometry in: GeometryProxy) -> CGFloat {
         return min(self.height, geometry.size.height)
     }
     
