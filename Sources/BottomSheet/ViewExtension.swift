@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+#if !os(macOS)
 public extension View {
     func bottomSheet<Content: View>(
         isPresented: Binding<Bool>,
@@ -67,4 +68,4 @@ public extension View {
         }
     }
 }
-
+#endif

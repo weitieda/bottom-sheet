@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+#if !os(macOS)
 public struct BottomSheet<Content: View>: View {
     
     private var dragToDismissThreshold: CGFloat { height * 0.2 }
@@ -124,4 +125,4 @@ public struct BottomSheet<Content: View>: View {
         )
     }
 }
-
+#endif
