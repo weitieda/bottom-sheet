@@ -70,8 +70,8 @@ public struct BottomSheet<Content: View>: View {
         }
     }
     
-    fileprivate func sheetHeight(geometry in: GeometryProxy) -> CGFloat {
-        return min(self.height, geometry.size.height)
+    fileprivate func sheetHeight(in geometry: GeometryProxy) -> CGFloat {
+        return min(height, geometry.size.height)
     }
     
     fileprivate func fullScreenLightGrayOverlay() -> some View {
