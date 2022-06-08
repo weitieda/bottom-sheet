@@ -26,7 +26,8 @@ struct ContentView: View {
                 height: 370,
                 topBarHeight: 16,
                 topBarCornerRadius: 16,
-                showTopIndicator: false
+                showTopIndicator: false,
+                animation: .spring()
             ) {
                 MapSettingView()
             }

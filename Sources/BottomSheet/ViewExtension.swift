@@ -18,6 +18,7 @@ public extension View {
         contentBackgroundColor: Color = Color(.systemBackground),
         topBarBackgroundColor: Color = Color(.systemBackground),
         showTopIndicator: Bool = true,
+        animation: Animation = .interactiveSpring(),
         @ViewBuilder content: @escaping () -> Content
     ) -> some View {
         ZStack {
@@ -29,6 +30,7 @@ public extension View {
                         topBarBackgroundColor: topBarBackgroundColor,
                         contentBackgroundColor: contentBackgroundColor,
                         showTopIndicator: showTopIndicator,
+                        animation: animation,
                         content: content)
         }
     }
@@ -41,6 +43,7 @@ public extension View {
         contentBackgroundColor: Color = Color(.systemBackground),
         topBarBackgroundColor: Color = Color(.systemBackground),
         showTopIndicator: Bool = true,
+        animation: Animation = .interactiveSpring(),
         @ViewBuilder content: @escaping (Item) -> Content
     ) -> some View {
         let isPresented = Binding {
@@ -58,7 +61,8 @@ public extension View {
             topBarCornerRadius: topBarCornerRadius,
             contentBackgroundColor: contentBackgroundColor,
             topBarBackgroundColor: topBarBackgroundColor,
-            showTopIndicator: showTopIndicator
+            showTopIndicator: showTopIndicator,
+            animation: animation
         ) {
             if let unwrapedItem = item.wrappedValue {
                 content(unwrapedItem)
