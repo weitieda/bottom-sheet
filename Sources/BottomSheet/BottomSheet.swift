@@ -52,21 +52,25 @@ public struct BottomSheet<Content: View>: View {
     
     public var body: some View {
         GeometryReader { geometry in
-            ZStack {
-                self.fullScreenLightGrayOverlay()
-                VStack(spacing: 0) {
-                    self.topBar(geometry: geometry)
-                    VStack(spacing: -8) {
-                        Spacer()
-                        self.content.padding(.bottom, geometry.safeAreaInsets.bottom)
-                        Spacer()
+            if geometry.size != .zero {
+                ZStack {
+                    self.fullScreenLightGrayOverlay()
+                    VStack(spacing: 0) {
+                        self.topBar(geometry: geometry)
+                        VStack(spacing: -8) {
+                            Spacer()
+                            self.content.padding(.bottom, geometry.safeAreaInsets.bottom)
+                            Spacer()
+                        }
                     }
+                    .frame(height: sheetHeight(in: geometry) - min(self.draggedOffset*2, 0))
+                    .background(self.contentBackgroundColor)
+                    .cornerRadius(self.topBarCornerRadius, corners: [.topLeft, .topRight])
+                    .animation(.interactiveSpring())
+                    .offset(y: self.isPresented ? (geometry.size.height/2 - sheetHeight(in: geometry)/2 + geometry.safeAreaInsets.bottom + self.draggedOffset) : (geometry.size.height/2 + sheetHeight(in: geometry)/2 + geometry.safeAreaInsets.bottom))
                 }
-                .frame(height: sheetHeight(in: geometry) - min(self.draggedOffset*2, 0))
-                .background(self.contentBackgroundColor)
-                .cornerRadius(self.topBarCornerRadius, corners: [.topLeft, .topRight])
-                .animation(.interactiveSpring())
-                .offset(y: self.isPresented ? (geometry.size.height/2 - sheetHeight(in: geometry)/2 + geometry.safeAreaInsets.bottom + self.draggedOffset) : (geometry.size.height/2 + sheetHeight(in: geometry)/2 + geometry.safeAreaInsets.bottom))
+            } else {
+                EmptyView()
             }
         }
     }
