@@ -18,6 +18,7 @@ public extension View {
         contentBackgroundColor: Color = Color(.systemBackground),
         topBarBackgroundColor: Color = Color(.systemBackground),
         showTopIndicator: Bool = true,
+        onDismiss: @escaping () -> Void?,
         @ViewBuilder content: @escaping () -> Content
     ) -> some View {
         ZStack {
@@ -29,10 +30,11 @@ public extension View {
                         topBarBackgroundColor: topBarBackgroundColor,
                         contentBackgroundColor: contentBackgroundColor,
                         showTopIndicator: showTopIndicator,
+                        onDismiss: onDismiss,
                         content: content)
         }
     }
-
+    
     func bottomSheet<Item: Identifiable, Content: View>(
         item: Binding<Item?>,
         height: CGFloat,
@@ -41,6 +43,7 @@ public extension View {
         contentBackgroundColor: Color = Color(.systemBackground),
         topBarBackgroundColor: Color = Color(.systemBackground),
         showTopIndicator: Bool = true,
+        onDismiss: @escaping () -> Void?,
         @ViewBuilder content: @escaping (Item) -> Content
     ) -> some View {
         let isPresented = Binding {
@@ -58,7 +61,8 @@ public extension View {
             topBarCornerRadius: topBarCornerRadius,
             contentBackgroundColor: contentBackgroundColor,
             topBarBackgroundColor: topBarBackgroundColor,
-            showTopIndicator: showTopIndicator
+            showTopIndicator: showTopIndicator,
+            onDismiss: onDismiss
         ) {
             if let unwrapedItem = item.wrappedValue {
                 content(unwrapedItem)
