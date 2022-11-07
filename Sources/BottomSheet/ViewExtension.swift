@@ -18,7 +18,7 @@ public extension View {
         contentBackgroundColor: Color = Color(.systemBackground),
         topBarBackgroundColor: Color = Color(.systemBackground),
         showTopIndicator: Bool = true,
-        onDismiss: @escaping () -> Void?,
+        onDismiss: (() -> Void)? = nil,
         @ViewBuilder content: @escaping () -> Content
     ) -> some View {
         ZStack {
@@ -43,7 +43,7 @@ public extension View {
         contentBackgroundColor: Color = Color(.systemBackground),
         topBarBackgroundColor: Color = Color(.systemBackground),
         showTopIndicator: Bool = true,
-        onDismiss: @escaping () -> Void?,
+        onDismiss: (() -> Void)? = nil,
         @ViewBuilder content: @escaping (Item) -> Content
     ) -> some View {
         let isPresented = Binding {

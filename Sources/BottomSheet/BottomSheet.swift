@@ -25,7 +25,7 @@ public struct BottomSheet<Content: View>: View {
     private let contentBackgroundColor: Color
     private let topBarBackgroundColor: Color
     private let showTopIndicator: Bool
-    private let onDismiss: () -> Void?
+    private let onDismiss: (() -> Void)?
     
     public init(
         isPresented: Binding<Bool>,
@@ -35,7 +35,7 @@ public struct BottomSheet<Content: View>: View {
         topBarBackgroundColor: Color = Color(.systemBackground),
         contentBackgroundColor: Color = Color(.systemBackground),
         showTopIndicator: Bool,
-        onDismiss: @escaping () -> Void?,
+        onDismiss: (() -> Void)? = nil,
         @ViewBuilder content: () -> Content
     ) {
         self.topBarBackgroundColor = topBarBackgroundColor
@@ -90,6 +90,7 @@ public struct BottomSheet<Content: View>: View {
             .animation(.interactiveSpring())
             .onTapGesture {
                 self.isPresented = false
+                guard let onDismiss = onDismiss else { return }
                 onDismiss()
             }
     }
@@ -119,6 +120,7 @@ public struct BottomSheet<Content: View>: View {
                         let velocityY = heightDiff / timeDiff
                         if velocityY > 1400 {
                             self.isPresented = false
+                            guard let onDismiss = onDismiss else { return }
                             onDismiss()
                             return
                         }
@@ -130,6 +132,7 @@ public struct BottomSheet<Content: View>: View {
                     let offsetY = value.translation.height
                     if offsetY > self.dragToDismissThreshold {
                         self.isPresented = false
+                        guard let onDismiss = onDismiss else { return }
                         onDismiss()
                     }
                     self.draggedOffset = 0
