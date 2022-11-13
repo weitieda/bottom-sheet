@@ -90,8 +90,7 @@ public struct BottomSheet<Content: View>: View {
             .animation(.interactiveSpring())
             .onTapGesture {
                 self.isPresented = false
-                guard let onDismiss = onDismiss else { return }
-                onDismiss()
+                onDismiss?()
             }
     }
     
@@ -120,8 +119,7 @@ public struct BottomSheet<Content: View>: View {
                         let velocityY = heightDiff / timeDiff
                         if velocityY > 1400 {
                             self.isPresented = false
-                            guard let onDismiss = onDismiss else { return }
-                            onDismiss()
+                            onDismiss?()
                             return
                         }
                     }
@@ -132,8 +130,7 @@ public struct BottomSheet<Content: View>: View {
                     let offsetY = value.translation.height
                     if offsetY > self.dragToDismissThreshold {
                         self.isPresented = false
-                        guard let onDismiss = onDismiss else { return }
-                        onDismiss()
+                        onDismiss?()
                     }
                     self.draggedOffset = 0
                 })
