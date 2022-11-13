@@ -25,6 +25,7 @@ public struct BottomSheet<Content: View>: View {
     private let contentBackgroundColor: Color
     private let topBarBackgroundColor: Color
     private let showTopIndicator: Bool
+    private let onDismiss: (() -> Void)?
     
     public init(
         isPresented: Binding<Bool>,
@@ -34,6 +35,7 @@ public struct BottomSheet<Content: View>: View {
         topBarBackgroundColor: Color = Color(.systemBackground),
         contentBackgroundColor: Color = Color(.systemBackground),
         showTopIndicator: Bool,
+        onDismiss: (() -> Void)? = nil,
         @ViewBuilder content: () -> Content
     ) {
         self.topBarBackgroundColor = topBarBackgroundColor
@@ -47,6 +49,7 @@ public struct BottomSheet<Content: View>: View {
             self.topBarCornerRadius = topBarHeight / 3
         }
         self.showTopIndicator = showTopIndicator
+        self.onDismiss = onDismiss
         self.content = content()
     }
     
@@ -85,7 +88,10 @@ public struct BottomSheet<Content: View>: View {
             .opacity(grayBackgroundOpacity)
             .edgesIgnoringSafeArea(.all)
             .animation(.interactiveSpring())
-            .onTapGesture { self.isPresented = false }
+            .onTapGesture {
+                self.isPresented = false
+                onDismiss?()
+            }
     }
     
     fileprivate func topBar(geometry: GeometryProxy) -> some View {
@@ -113,6 +119,7 @@ public struct BottomSheet<Content: View>: View {
                         let velocityY = heightDiff / timeDiff
                         if velocityY > 1400 {
                             self.isPresented = false
+                            onDismiss?()
                             return
                         }
                     }
@@ -123,6 +130,7 @@ public struct BottomSheet<Content: View>: View {
                     let offsetY = value.translation.height
                     if offsetY > self.dragToDismissThreshold {
                         self.isPresented = false
+                        onDismiss?()
                     }
                     self.draggedOffset = 0
                 })
