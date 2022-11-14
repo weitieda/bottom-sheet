@@ -9,12 +9,17 @@
 import SwiftUI
 
 struct MapSettingView: View {
+    let dismiss: () -> Void
+
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
                 Text("Map Settings").font(.title).bold()
                 Spacer()
-                Image(systemName: "xmark.circle.fill").foregroundColor(.gray).font(.system(size: 26))
+                Image(systemName: "xmark.circle.fill")
+                  .foregroundColor(.gray)
+                  .font(.system(size: 26))
+                  .onTapGesture { dismiss() }
             }.padding(.horizontal)
             Picker(selection: .constant(0), label: Text("")) {
                 Text("Map").tag(0)
@@ -62,6 +67,6 @@ struct MapSettingView: View {
 
 struct MapSettingView_Previews: PreviewProvider {
     static var previews: some View {
-        MapSettingView()
+      MapSettingView(dismiss: {})
     }
 }

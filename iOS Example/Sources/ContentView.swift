@@ -28,7 +28,7 @@ struct ContentView: View {
                 topBarCornerRadius: 16,
                 showTopIndicator: false
             ) {
-                MapSettingView()
+                MapSettingView{ self.showMapSetting = false }
             }
             .navigationBarTitle("Bottom Sheet")
             .navigationBarItems(
