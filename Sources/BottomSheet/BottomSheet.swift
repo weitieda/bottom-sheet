@@ -25,6 +25,7 @@ public struct BottomSheet<Content: View>: View {
     private let contentBackgroundColor: Color
     private let topBarBackgroundColor: Color
     private let showTopIndicator: Bool
+    private let animation: Animation
     private let onDismiss: (() -> Void)?
     
     public init(
@@ -35,6 +36,7 @@ public struct BottomSheet<Content: View>: View {
         topBarBackgroundColor: Color = Color(.systemBackground),
         contentBackgroundColor: Color = Color(.systemBackground),
         showTopIndicator: Bool,
+        animation: Animation = .easeInOut(duration: 0.3),
         onDismiss: (() -> Void)? = nil,
         @ViewBuilder content: () -> Content
     ) {
@@ -49,6 +51,7 @@ public struct BottomSheet<Content: View>: View {
             self.topBarCornerRadius = topBarHeight / 3
         }
         self.showTopIndicator = showTopIndicator
+        self.animation = animation
         self.onDismiss = onDismiss
         self.content = content()
     }
@@ -69,7 +72,7 @@ public struct BottomSheet<Content: View>: View {
                     .frame(height: sheetHeight(in: geometry) - min(self.draggedOffset*2, 0))
                     .background(self.contentBackgroundColor)
                     .cornerRadius(self.topBarCornerRadius, corners: [.topLeft, .topRight])
-                    .animation(.interactiveSpring())
+                    .animation(animation)
                     .offset(y: self.isPresented ? (geometry.size.height/2 - sheetHeight(in: geometry)/2 + geometry.safeAreaInsets.bottom + self.draggedOffset) : (geometry.size.height/2 + sheetHeight(in: geometry)/2 + geometry.safeAreaInsets.bottom))
                 }
             } else {
@@ -87,7 +90,7 @@ public struct BottomSheet<Content: View>: View {
             .black
             .opacity(grayBackgroundOpacity)
             .edgesIgnoringSafeArea(.all)
-            .animation(.interactiveSpring())
+            .animation(animation)
             .onTapGesture {
                 self.isPresented = false
                 onDismiss?()
