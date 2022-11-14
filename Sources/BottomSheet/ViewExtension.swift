@@ -64,8 +64,8 @@ public extension View {
             showTopIndicator: showTopIndicator,
             onDismiss: onDismiss
         ) {
-            if let unwrapedItem = item.wrappedValue {
-                content(unwrapedItem)
+            if let unwrappedItem = item.wrappedValue {
+              content(unwrappedItem).disabled(isPresented.wrappedValue)
             } else {
                 EmptyView()
             }
